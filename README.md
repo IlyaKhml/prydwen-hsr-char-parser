@@ -23,8 +23,8 @@ The script is focused on collecting information about characters from the game *
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/IlyaKhml/prydwen-hsr-char-parser/
+   cd prydwen-hsr-char-parser
    ```
 
 2. Install the required dependencies:
