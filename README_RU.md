@@ -129,6 +129,3 @@ python main.py --character kafka
 ## License
 
 Проект HSR Character Data Parser распространяется на условиях лицензии MIT.
-
-<img src="https://img.shields.io/badge/License-MIT-green
-   " alt="License">
