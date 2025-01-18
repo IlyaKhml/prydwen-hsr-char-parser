@@ -1,4 +1,5 @@
 import pickle
+import os
 
 def save_result_to_file(result, filename):
     """
@@ -8,7 +9,9 @@ def save_result_to_file(result, filename):
         result (dict): The dictionary to save.
         filename (str): The file path to save the data.
     """
+
     try:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         with open(filename, 'wb') as file:
             pickle.dump(result, file)
     

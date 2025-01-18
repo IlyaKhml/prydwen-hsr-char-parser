@@ -27,7 +27,15 @@
    cd <repository-folder>
    ```
 
-2. Установите необходимые зависимости:
+2. Создайте и активируйте виртуальную среду:
+   ```bash
+   python -m venv venv
+   
+   source venv/bin/activate # On Linux
+   venv\Scripts\activate # On Windows
+   ```
+
+3. Установите необходимые зависимости:
    ```bash
    pip install -r requirements.txt
    ```

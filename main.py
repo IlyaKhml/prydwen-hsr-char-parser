@@ -1,6 +1,6 @@
 import argparse
 from file_io import save_result_to_file
-from character_list_parser import fetch_character_links
+from character_list_parser import fetch_character_names
 from character_parser import fetch_character_data_with_selenium
 
 import requests
@@ -30,7 +30,9 @@ def process_characters(char_list):
             error_list.append(char)
 
         print('')
-        time.sleep(5)
+        
+        if i != len(char_list) - 1:
+            time.sleep(5)
 
     if len(error_list) > 0:
         print(f'List of characters missed due to an error:{error_list}')
@@ -45,12 +47,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.all:
-        char_list = fetch_character_links("https://www.prydwen.gg/star-rail/characters")[0]
+        char_list = fetch_character_names("https://www.prydwen.gg/star-rail/characters")[0]
         process_characters(char_list)
 
     elif args.character:
         try:
             process_characters([args.character])
+
         except Exception as e:
             print(f"Error during character processing '{args.character}': {e}")
 

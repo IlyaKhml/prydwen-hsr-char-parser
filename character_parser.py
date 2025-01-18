@@ -3,6 +3,7 @@ from text_utils import get_text_with_spaces
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -10,7 +11,7 @@ import pandas as pd
 import requests
 import time
 import re
-
+import os
 
 def parse_light_cones(soup: BeautifulSoup, char_element: str) -> pd.DataFrame:
     """
@@ -860,8 +861,19 @@ def fetch_character_data_with_selenium(url: str) -> dict:
     options.add_argument('--headless') # without opening a browser window
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
+    options.add_argument('--log-level=3')                
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--enable-unsafe-swiftshader')
+    options.add_argument('--ignore-ssl-errors')
+    options.add_argument('--show-capture=no')
+    options.add_argument("--disable-logging");
+    options.add_argument("--disable-dev-shm-usage");
+    options.add_argument("--output=/dev/null");
+    
+    # Перенаправление логов в os.devnull
+    service = Service(log_path=os.devnull)
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=service, options=options)
     driver.get(url)
 
     try:

@@ -14,7 +14,7 @@ The script is focused on collecting information about characters from the game *
 - Parse data for a single character.
 - Parse data for all characters in the list.
 - Save parsed data in `.pickle` files.
-- Automatically generates URLs for character pages.
+- Automatically find URLs for character pages.
 - Handles errors gracefully and lists skipped characters.
 
 ---
@@ -23,11 +23,19 @@ The script is focused on collecting information about characters from the game *
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/IlyaKhml/prydwen-hsr-char-parser/
+   cd prydwen-hsr-char-parser
    ```
 
-2. Install the required dependencies:
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   
+   source venv/bin/activate # On Linux
+   venv\Scripts\activate # On Windows
+   ```
+
+3. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```

@@ -1,15 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-def fetch_character_links(url):
+def fetch_character_names(url="https://www.prydwen.gg/star-rail/characters"):
     """
-    Fetches a list of unique character links from the specified URL.
+    Fetches a list of unique character names from the specified URL.
 
     Args:
         url (str): URL of the page containing character links.
 
     Returns:
-        list: A list of unique character links.
+        list: A list of unique character.
         int: HTTP status code of the response.
     """
     try:
@@ -25,7 +25,10 @@ def fetch_character_links(url):
                 if link['href'].startswith('/star-rail/characters/') and link['href'] != '/star-rail/characters/'
             }
 
-            return list(character_links), response.status_code
+            # Remove base URL from character links
+            characters = sorted([link[44:] for link in character_links])
+
+            return characters, response.status_code
         else:
             return [], response.status_code
         
@@ -38,7 +41,7 @@ if __name__ == "__main__":
     # URL of the page with the character list
     url = "https://www.prydwen.gg/star-rail/characters"
     
-    character_links, status_code = fetch_character_links(url)
+    character_links, status_code = fetch_character_names(url)
 
     if status_code == 200:
         print(f'Total characters found: {len(character_links)}')
