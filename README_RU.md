@@ -23,8 +23,8 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/IlyaKhml/prydwen-hsr-char-parser/
+   cd prydwen-hsr-char-parser
    ```
 
 2. Создайте и активируйте виртуальную среду:
